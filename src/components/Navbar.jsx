@@ -13,5 +13,26 @@ const Navbar = ({ accounts, setAccounts }) => {
       setAccounts(accounts);
     }
   }
-  return <div></div>;
+  return (
+    <div>
+      {/* left side - Social Media icons*/}
+      <div>Facebook</div>
+      <div>Twitter</div>
+      <div>Email</div>
+
+      {/* Right Side - Sections and Connect */}
+      <div>About</div>
+      <div>Mimnt</div>
+      <div>Team</div>
+
+      {/* Connect  */}
+      {isConnected ? (
+        <p>Connected</p>
+      ) : (
+        <button onClick={connectAccount}>Connect MetaMask</button>
+      )}
+    </div>
+  );
 };
+
+export default Navbar;
