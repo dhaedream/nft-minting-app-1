@@ -19,4 +19,13 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.8.4",
+  networks: {
+    rinkeby: {
+      url: process.env.REACT_APP_RINKEBY_RPC_URL,
+      accounts: [REACT_APP_PRIVATE_KEY],
+    },
+  },
+  etherscan: {
+    apiKey: process.env.REACT_APP_ETHERSCAN_KEY,
+  },
 };
