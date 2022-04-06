@@ -55,4 +55,11 @@ contract RoboPunksNFT is ERC721, Ownable {
         return string(abi.encodePacked(baseTokenUri, Strings.toString(tokenId_), ".json"));
     }
 
+    function withdraw() external onlyOwner {
+                       //target wallet. call it. pass value of address (this contract)
+        //if function is true > successful
+        (bool success,) = withdrawWallet.call{ value: address(this).balance}('');
+        require(success, 'withdraw failed');
+    }
+
 }
