@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-// import MainMint from "./MainMint";
+import MainMint from "./components/MainMint";
 import NavBar from "./components/Navbar";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <NavBar accounts={accounts} setAccounts={setAccounts} />
-      {/* <MainMint accounts={accounts} setAccounts={setAccounts} /> */}
+      <MainMint accounts={accounts} setAccounts={setAccounts} />
     </div>
   );
 }
