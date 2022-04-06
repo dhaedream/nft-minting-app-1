@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 
 pragma solidity >=0.4.22 <0.9.0;
-
+//nft standards
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 //define function only owner can use
 import '@openzeppelin/contracts/access/Ownable.sol';
@@ -25,5 +25,15 @@ contract RoboPunksNFT is ERC721, Ownable {
     //so user cant mint more than max
     mapping( address => uint256 ) public walletMints;
 
+
+    //constructor runs first, NFT Name + Symbol
+    constructor() payable ERC721('RoboPunks', 'RP') {
+        mintPrice = 0.02 ether;
+        totalSupply = 0;
+        maxSupply = 1000;
+        maxPerWallet = 3;
+    }
     
+
+
 }
