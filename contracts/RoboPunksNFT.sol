@@ -40,6 +40,19 @@ contract RoboPunksNFT is ERC721, Ownable {
         //able to change state var (to result of arg?) when this function is called
         isPublicMintEnabled = isPublicMintEnabled_;
     }
+    
+    //calldata(similar to memory) - special data location that contains function arguments
+    //has our images url
+    function setBaseUri(string calldata baseTokenUri_) external onlyOwner {
+        baseTokenUri = baseTokenUri_;
+    }
 
+    //overriding openZ ERC token/stndard of URI retrival with our own.
+    //tokenUri calls its own images + we need our  own uri
+    function tokenURI(uint256 tokenId_) public view override returns (string memory) {
+        require(_exists(tokenId_), 'Token does not exist');
+        //target our uri(baseTokenUri), adding tokenId to string + making json file
+        return string(abi.encodePacked(baseTokenUri, Strings.toString(tokenId_), ".json"));
+    }
 
 }
