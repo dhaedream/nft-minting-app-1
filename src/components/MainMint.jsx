@@ -60,6 +60,20 @@ const MainMint = ({ accounts, setAccounts }) => {
         It's 2078.Can the RoboPunks NFTs save humans from destructive rampant
         NFT speculations? Mint Robopunks to find out.
       </p>
+      {isConnected ? (
+        <div>
+          <div>
+            {/* set mint value  */}
+            <button onClick={handleDecrement}>-</button>
+            <input type="number" value={mintAmount} />
+            <button onClick={handleIncrement}>+</button>
+          </div>
+          {/* run mint function  */}
+          <button onClick={handleMint}>Mint Now</button>
+        </div>
+      ) : (
+        <p>Connect wallet to begin minting.</p>
+      )}
     </div>
   );
 };
