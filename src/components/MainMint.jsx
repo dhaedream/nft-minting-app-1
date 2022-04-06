@@ -48,7 +48,20 @@ const MainMint = ({ accounts, setAccounts }) => {
     setMintAmount(mintAmount - 1);
   };
 
-  return <div>MainMint</div>;
+  const handleIncrement = () => {
+    if (mintAmount >= 3) return;
+    setMintAmount(mintAmount + 1);
+  };
+
+  return (
+    <div>
+      <h1>RoboPunks</h1>
+      <p>
+        It's 2078.Can the RoboPunks NFTs save humans from destructive rampant
+        NFT speculations? Mint Robopunks to find out.
+      </p>
+    </div>
+  );
 };
 
 export default MainMint;
