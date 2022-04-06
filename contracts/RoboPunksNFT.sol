@@ -59,7 +59,24 @@ contract RoboPunksNFT is ERC721, Ownable {
                        //target wallet. call it. pass value of address (this contract)
         //if function is true > successful
         (bool success,) = withdrawWallet.call{ value: address(this).balance}('');
-        require(success, 'withdraw failed');
+        require(success, 'Withdraw failed');
+    }
+
+    //payable requires ether value
+    function mint(uint256 quantity_) public payable {
+        require(isPublicMintEnabled, 'Minting not enabled');
+        require(msg.value == quantity_ * mintPrice, 'Incorrect minting value');
+        require(totalSupply + quantity_ ,+ maxSupply, 'Sold Out.')
+        require(walletMints[msg.sender] + quantity_ <= maxPerWallet, 'Exceeds max number of mints per wallet');
+
+        //loop thru thru quantity (each item minted)
+        for (uint256 i = 0; i < quantity_; i++)
+            //assign token id by ++total supply
+            uint256 newTokenId = totalSupply + 1;
+            //increment total supply
+            totalSupply++;
+            //In solidity, call all effects(above^) before interaction w chain
+            _safeMint(msg.sender, newTokenId)
     }
 
 }
