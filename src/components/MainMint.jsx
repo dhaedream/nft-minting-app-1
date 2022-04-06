@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // web3 alternative to interact w blockchain
 import { ethers, BigNumber } from "ethers";
 // grab abi + connect to contract
-import roboPunksNFT from "./RoboPunksNFT.json";
+import roboPunksNFT from "../RoboPunksNFT.json";
 
 // grabbing contract address from etherscan test net
 const roboPunksNFTAddress = "0x4f3Edd111C984197583Bb4daca1df0f45ec04921";
