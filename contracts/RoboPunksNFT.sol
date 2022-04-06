@@ -33,7 +33,13 @@ contract RoboPunksNFT is ERC721, Ownable {
         maxSupply = 1000;
         maxPerWallet = 3;
     }
-    
+
+    //isPubli..._ is an argument, not the variable declared ablove
+    //external + only owner/deployer of contract can call this function
+    function setPublicMintEnabled(bool isPublicMintEnabled_) external onlyOwner {
+        //able to change state var (to result of arg?) when this function is called
+        isPublicMintEnabled = isPublicMintEnabled_;
+    }
 
 
 }
