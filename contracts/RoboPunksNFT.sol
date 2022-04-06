@@ -12,7 +12,7 @@ contract RoboPunksNFT is ERC721, Ownable {
     //current number of nfts user is minting
     uint256 public totalSupply;
     //max number allowed. will be 1k
-    uint265 public maxSupply;
+    uint256 public maxSupply;
     //max # a specific wallet can mint
     uint256 public maxPerWallet;
     //if account is able to mint (from Ownable)
@@ -66,17 +66,18 @@ contract RoboPunksNFT is ERC721, Ownable {
     function mint(uint256 quantity_) public payable {
         require(isPublicMintEnabled, 'Minting not enabled');
         require(msg.value == quantity_ * mintPrice, 'Incorrect minting value');
-        require(totalSupply + quantity_ ,+ maxSupply, 'Sold Out.');
+        require(totalSupply + quantity_ <= maxSupply, 'Sold Out.');
         require(walletMints[msg.sender] + quantity_ <= maxPerWallet, 'Exceeds max number of mints per wallet');
 
         //loop thru each item minted)
-        for (uint256 i = 0; i < quantity_; i++)
+        for (uint256 i = 0; i < quantity_; i++){
             //assign token id by ++total supply
             uint256 newTokenId = totalSupply + 1;
             //increment total supply
             totalSupply++;
             //In solidity, call all effects(above^) before interaction w chain
             _safeMint(msg.sender, newTokenId);
+        }
     }
 
 }

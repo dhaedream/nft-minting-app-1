@@ -22,7 +22,7 @@ module.exports = {
   networks: {
     rinkeby: {
       url: process.env.REACT_APP_RINKEBY_RPC_URL,
-      accounts: [REACT_APP_PRIVATE_KEY],
+      accounts: process.env.REACT_APP_PRIVATE_KEY,
     },
   },
   etherscan: {
